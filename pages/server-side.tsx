@@ -1,18 +1,15 @@
 import { gql } from '@apollo/client';
-import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import client from '../apollo-client';
 import styles from '../styles/Home.module.css';
 
 interface Test {
- props: {
-  countries: string[];
- };
+ countries: string[];
 }
 
-const Home: NextPage<Test> = ({ props }) => {
- console.log(props);
+const Home = ({ countries }: Test) => {
+ console.log(countries);
  return (
   <div className={styles.container}>
    <Head>
@@ -51,7 +48,7 @@ const Home: NextPage<Test> = ({ props }) => {
       <p>Instantly deploy your Next.js site to a public URL with Vercel.</p>
      </a>
      <div className={styles.grid}>
-      {props.countries.map((country: any) => (
+      {countries.map((country: any) => (
        <div key={country.code} className={styles.card}>
         <h3>
          <a href="#country-name" aria-hidden="true" className="aal_anchor" id="country-name">
@@ -85,7 +82,7 @@ const Home: NextPage<Test> = ({ props }) => {
  );
 };
 
-Home.getInitialProps = async () => {
+export async function getServerSideProps() {
  const { data } = await client.query({
   query: gql`
    query Countries {
@@ -103,6 +100,6 @@ Home.getInitialProps = async () => {
    countries: data.countries.slice(0, 4),
   },
  };
-};
+}
 
 export default Home;

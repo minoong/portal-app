@@ -12,5 +12,12 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "extends": ["eslint:recommended","next", "next/core-web-vitals", "plugin:prettier/recommended"]
+  "extends": ["eslint:recommended","next", "next/core-web-vitals", "plugin:prettier/recommended", "prettier"],
+  "settings": {
+    "import/resolver" : {
+      "node": {
+        "extensions" : [".js", ".jsx", ".ts", ".tsx", ".d.ts"]
+      }
+    }
+  }
 }
