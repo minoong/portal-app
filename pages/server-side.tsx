@@ -1,15 +1,15 @@
-import { gql } from '@apollo/client';
-import Head from 'next/head';
-import Image from 'next/image';
-import client from '../apollo-client';
-import styles from '../styles/Home.module.css';
+import { gql } from '@apollo/client'
+import Head from 'next/head'
+import Image from 'next/image'
+import client from '../apollo-client'
+import styles from '../styles/Home.module.css'
 
 interface Test {
- countries: string[];
+ countries: string[]
 }
 
 const Home = ({ countries }: Test) => {
- console.log(countries);
+ console.log(countries)
  return (
   <div className={styles.container}>
    <Head>
@@ -79,8 +79,8 @@ const Home = ({ countries }: Test) => {
     </a>
    </footer>
   </div>
- );
-};
+ )
+}
 
 export async function getServerSideProps() {
  const { data } = await client.query({
@@ -93,13 +93,13 @@ export async function getServerSideProps() {
     }
    }
   `,
- });
+ })
 
  return {
   props: {
    countries: data.countries.slice(0, 4),
   },
- };
+ }
 }
 
-export default Home;
+export default Home
