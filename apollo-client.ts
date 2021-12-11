@@ -1,8 +1,14 @@
-import { ApolloClient, InMemoryCache } from '@apollo/client';
+import { ApolloClient, createHttpLink, InMemoryCache } from '@apollo/client'
+
+const httpLink = createHttpLink({
+ uri: 'http://127.0.0.1:4000/graphql',
+ credentials: 'same-origin',
+})
 
 const client = new ApolloClient({
- uri: 'https://countries.trevorblades.com',
+ ssrMode: typeof window === 'undefined',
+ link: httpLink,
  cache: new InMemoryCache(),
-});
+})
 
-export default client;
+export default client
