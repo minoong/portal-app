@@ -17,6 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@components/*" : ["components/*"],
+      // "@queries/*" : ["apollo/queries/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
