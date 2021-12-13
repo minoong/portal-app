@@ -35,3 +35,6 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+
+/apollo/types
+/styles/styles.css
