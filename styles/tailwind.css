@@ -13,4 +13,27 @@
  @apply text-lg font-medium focus:outline-none text-white py-4  transition-colors bg-lime-600 hover:bg-lime-700;
 }
 
+.toast-top-right {
+ @apply top-3 right-3 transition duration-75 ease-in-out animate-t-in-right;
+}
+
+.toast-bottom-right {
+ @apply bottom-3 right-3 transition duration-75 ease-in-out animate-t-in-right;
+}
+
+.toast-top-left {
+ @apply top-3 left-3 transition duration-75 ease-in animate-t-in-left;
+}
+
+.toast-bottom-left {
+ @apply bottom-3 left-3 transition duration-75 ease-in animate-t-in-left;
+}
+
+.toast-top-center {
+ @apply top-3 left-2/4 transform -translate-x-2/4 animate-t-in-top;
+}
+.toast-bottom-center {
+ @apply bottom-3 left-2/4 transform -translate-x-2/4 animate-t-in-bottom;
+}
+
 @tailwind utilities;

@@ -4,6 +4,22 @@ import { UserRole } from 'apollo/types/__generated__/globalTypes'
 import { FormType } from 'containers/auth/FormContainer'
 import React from 'react'
 import { FormState, UseFormGetValues, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form'
+import Toast from '@components/common/Toast'
+
+const testList = [
+ {
+  id: 1,
+  title: 'Success',
+  description: 'This is a success toast component',
+  backgroundColor: '#5cb85c',
+ },
+ {
+  id: 2,
+  title: 'Danger',
+  description: 'This is an error toast component',
+  backgroundColor: '#d9534f',
+ },
+]
 
 type IProps<T> = {
  [P in keyof T]?: T[P]
@@ -92,6 +108,7 @@ const Form: React.FC<IProps<FormType>> = ({ register, getValues, isSignIn, handl
     </div>
     <div className="flex flex-wrap -mx-3 mb-6">
      <div className="w-full px-3">
+      <Toast toastList={testList} position="toast-bottom-center" />
       <Button isActive={isValid} isLoading={loading}>
        Sign In
       </Button>
