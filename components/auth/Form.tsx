@@ -2,22 +2,16 @@ import Button from '@components/common/Button'
 import * as classNames from 'classnames'
 import { UserRole } from 'apollo/types/__generated__/globalTypes'
 import { FormType } from 'containers/auth/FormContainer'
-import React from 'react'
+import React, { useState } from 'react'
 import { FormState, UseFormGetValues, UseFormHandleSubmit, UseFormRegister } from 'react-hook-form'
-import Toast from '@components/common/Toast'
+import Toast, { toast } from '@components/common/Toast'
 
-const testList = [
+const testList: toast[] = [
  {
   id: 1,
   title: 'Success',
   description: 'This is a success toast component',
-  backgroundColor: '#5cb85c',
- },
- {
-  id: 2,
-  title: 'Danger',
-  description: 'This is an error toast component',
-  backgroundColor: '#d9534f',
+  type: 'SUCESS',
  },
 ]
 
@@ -35,6 +29,12 @@ type IProps<T> = {
 
 const Form: React.FC<IProps<FormType>> = ({ register, getValues, isSignIn, handleSubmit, onSubmit, formState, loading }) => {
  const { errors, isValid } = formState
+ const [list, setList] = useState(testList)
+
+ const onClick = () => {
+  setList((state) => [...state, ...testList])
+ }
+
  return (
   <>
    <form className="w-full mt-14" onSubmit={handleSubmit(onSubmit)}>
@@ -108,7 +108,10 @@ const Form: React.FC<IProps<FormType>> = ({ register, getValues, isSignIn, handl
     </div>
     <div className="flex flex-wrap -mx-3 mb-6">
      <div className="w-full px-3">
-      <Toast toastList={testList} position="toast-bottom-center" />
+      <button onClick={onClick} type="button">
+       add
+      </button>
+      <Toast toastList={list} position="toast-top-right" dismissTime={5000} />
       <Button isActive={isValid} isLoading={loading}>
        Sign In
       </Button>
